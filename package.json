@@ -3,5 +3,6 @@
   "main": "main.js",
   "license": "UNLICENSED",
   "dependencies": {
+    "chokidar": "^3.5.3"
   }
 }
