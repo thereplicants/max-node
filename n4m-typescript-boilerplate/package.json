@@ -1,5 +1,6 @@
 {
   "name": "n4m-typescript",
+  "homepage": "https://github.com/yuichkun/n4m-typescript-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +9,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^12.0.8",
     "ts-node": "^8.3.0",
