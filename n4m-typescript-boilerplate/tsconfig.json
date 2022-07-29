@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",                     
+    "module": "commonjs",                
+    "outDir": "./lib",
+    "lib": ["es2019"],                   
+    "noImplicitAny": false,
+    "paths": {
+      "max-api": ["@types/max-api.d.ts"]
+    }
+  }
+}
