@@ -1,3 +1,7 @@
+// See also: https://github.com/Fr0stbyteR/squig/blob/master/types/max-api.d.ts
+/**
+ * Ref: https://docs.cycling74.com/nodeformax/api/module-max-api.html
+ */
 declare module "max-api" {
 	type JSONPrimitive = string | number | boolean | null;
 	type JSONValue = JSONPrimitive | JSONObject | JSONArray;
