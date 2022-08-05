@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 1084.0, 599.0 ],
+		"rect" : [ 34.0, 87.0, 774.0, 599.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 10.0,
@@ -168,10 +168,10 @@
 					"maxclass" : "live.comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 8.0, 152.0, 141.0, 20.0 ],
+					"patching_rect" : [ 8.0, 152.0, 80.0, 20.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 8.0, 144.0, 20.0 ],
-					"text" : "White notes arpeggiator",
+					"text" : "Arpeggiator",
 					"textjustification" : 1
 				}
 
@@ -194,8 +194,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 144.0, 232.000000476837158, 127.0, 20.0 ],
-					"text" : "prepend notesPerMeasure"
+					"patching_rect" : [ 144.0, 232.000000476837158, 99.0, 20.0 ],
+					"text" : "prepend setDuration"
 				}
 
 			}
@@ -210,6 +210,7 @@
 					"patching_rect" : [ 144.0, 176.000000476837158, 41.0, 48.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 96.0, 144.0, 48.0 ],
+					"prototypename" : "duration",
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_enum" : [ "1", "2", "4", "8", "16", "32" ],
@@ -223,7 +224,7 @@
 
 					}
 ,
-					"varname" : "notesPerMeasure"
+					"varname" : "duration"
 				}
 
 			}
@@ -362,8 +363,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 8.0, 232.000000476837158, 119.0, 20.0 ],
-					"text" : "prepend numberOfNotes"
+					"patching_rect" : [ 8.0, 232.000000476837158, 87.0, 20.0 ],
+					"text" : "prepend setMeter"
 				}
 
 			}
@@ -382,16 +383,16 @@
 						"valueof" : 						{
 							"parameter_initial" : [ 8.0 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "numberOfNotes",
+							"parameter_longname" : "Meter",
 							"parameter_mmax" : 31.0,
-							"parameter_shortname" : "Number of notes",
+							"parameter_shortname" : "Meter",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 0
 						}
 
 					}
 ,
-					"varname" : "numberOfNotes"
+					"varname" : "meter"
 				}
 
 			}
@@ -468,8 +469,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -627,7 +626,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 8.0, 72.0, 89.0, 20.0 ],
+					"patching_rect" : [ 8.0, 72.0, 80.0, 20.0 ],
 					"text" : "prepend noteIn"
 				}
 
@@ -655,8 +654,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -835,6 +832,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-25", 0 ],
+					"midpoints" : [ 17.5, 99.0, 96.5, 99.0, 96.5, 34.0, 113.5, 34.0 ],
 					"source" : [ "obj-35", 0 ]
 				}
 
@@ -902,6 +900,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-25", 0 ],
+					"midpoints" : [ 209.5, 34.5, 113.5, 34.5 ],
 					"source" : [ "obj-48", 0 ]
 				}
 
