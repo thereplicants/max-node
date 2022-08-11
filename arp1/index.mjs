@@ -9,7 +9,7 @@ import { buildSequence } from './tools/sequencer.mjs';
 let meter = 1; // number of beats in a cycle
 let range = 1; // the number of notes above the root that a sequence can ascend
 let tuplet = 1; // length of a note, or how quickly the cycle moves
-let mode = "asc" // shape of sequence. enum: touch, asc, desc, sine, duo
+let mode = "touch" // shape of sequence. enum: touch, asc, desc, sine, duo
 let humanize = 0; // dynamic swing
 let wave1 = 0; // for Duo Mode: First wave
 let wave2 = 0; // for Duo Mode: Second wave
@@ -29,36 +29,43 @@ const panic = () => {
 const setMeter = (number) => {
   meter = number;
   console.log('`meter` set to ' + number);
+  callBuildSequence();
 };
 
 const setRange = (number) => {
   range = number;
   console.log('`range` set to ' + number);
+  callBuildSequence();
 };
 
 const setTuplet = (number) => {
   tuplet = number;
   console.log('`tuplet` set to ' + number);
+  callBuildSequence();
 };
 
-const setMode = (string) => {
-  mode = string;
-  console.log('`mode` set to ' + string);
+const setMode = (index) => {
+  mode = ["touch","asc","desc","sine","duo"][index];
+  console.log('`mode` set to ' + mode);
+  callBuildSequence();
 };
 
 const setHumanize = (number) => {
   humanize = number;
   console.log('`humanize` set to ' + number);
+  callBuildSequence();
 };
 
 const setWave1 = (number) => {
   wave1 = number;
   console.log('`wave1` set to ' + number);
+  callBuildSequence();
 };
 
 const setWave2 = (number) => {
   wave2 = number;
   console.log('`wave1` set to ' + number);
+  callBuildSequence();
 };
 
 
@@ -85,19 +92,26 @@ const noteIn = (note, velocity) => {
     heldVelos.push(velocity);   
   }
 
-  // Build sequence array
-  sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2);
+  callBuildSequence();
   console.log("sequence", sequence);
 };
 
+function mod(n, m) {
+  return n % m;
+}
+
+function callBuildSequence() {
+  sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2)
+}
+
 function bang() {
-  console.log("bang!");
+  console.log("meter:", meter, " range:", range, " notes:", heldNotes, " seq:", sequence);
   if (previousNote) this.outlet('note', ...[previousNote, 0]);
   if (sequence.length && heldVelos.length) {
     try {
       previousNote = sequence[sIndex];
       this.outlet('note', ...[sequence[sIndex], heldVelos[sIndex % heldVelos.length]]);
-      sIndex = mod(++sIndex, meter);
+      sIndex = mod(++sIndex, meter); 
     } catch(e) {
       console.log(e);
     }    

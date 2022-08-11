@@ -5,28 +5,24 @@ Build Sequence
  - of length METER
  - and maximum intervalic range RANGE
 */
-// import { Note } from "@tonaljs/tonal";
 
-let allPossibleNotes = [];
-let sequence = [];
-
-
-function _assembleTouch() {
-    return allPossibleNotes;
+function _assembleTouch(notes) {
+    return notes;
 };
 
-function _assembleAsc() {
-    let newList = {...allPossibleNotes};
+function _assembleAsc(notes) {
+    let newList = JSON.parse(JSON.stringify(notes));
     return newList.sort();
 };
 
-function _assembleDesc() {
-    let newList = {...allPossibleNotes};
+function _assembleDesc(notes) {
+    console.log("creating desc from ", notes);
+    let newList = JSON.parse(JSON.stringify(notes));
     return newList.sort((a,b) => b - a);
 };
 
 function _assembleSine() {
-
+    console.log("sine")
 };
 
 function _assembleDuosine(wave1, wave2) {
@@ -34,41 +30,33 @@ function _assembleDuosine(wave1, wave2) {
 };
 
 function _createAllPossibleList(notes, meter, range) {
-    console.log(notes, meter, range);
-    allPossibleNotes = new Array(meter);
+    console.log("createPossibleList: ", notes, meter, range);
+    let newNotes = new Array(meter);
     for (let i = 0; i < meter; i++) {
-        allPossibleNotes[i] = notes[i % notes.length] + 12*(Math.floor(i / notes.length));
+        newNotes[i] = notes[i % notes.length] + 12*(Math.floor(i / notes.length));
+        newNotes[i] = newNotes[i] - 12*(Math.floor(i / range));
     }
-    return allPossibleNotes;
+    return newNotes;
 }
 
-function _createSequence(mode, wave1, wave2) {
-    console.log(mode, wave1, wave2);
+function _createSequence(notes, mode, wave1, wave2) {
+    console.log("creating sequence with", notes, mode, wave1, wave2);
     switch(mode) {
-        case "touch": 
-            _assembleTouch();
-            break;
-        case "asc":
-            _assembleAsc();
-            break;
-        case "desc":
-            _assembleDesc();
-            break;
-        case "sine":
-            _assembleSine();
-            break;
-        case "duo":
-            _assembleDuosine(wave1, wave2);
-            break;    
+        case "touch": return _assembleTouch(notes);
+        case "asc": return _assembleAsc(notes);
+        case "desc": return _assembleDesc(notes);
+        case "sine": return _assembleSine(notes);
+        case "duo": return _assembleDuosine(notes, wave1, wave2);  
     }
 }
 
 export function buildSequence(notes, meter, range, mode, wave1, wave2) {
     try {
-        console.log(notes, meter, range, mode, wave1, wave2);
-        sequence = new Array(meter);
-        _createAllPossibleList(notes, meter, range);
-        return _createSequence(mode, wave1, wave2);
+        console.log("buildSequence with ", notes, meter, range, mode, wave1, wave2);
+        const toReturn =  _createSequence(_createAllPossibleList(notes, meter, range),
+                                          mode, wave1, wave2);
+        console.log("buildSequence returns: ", toReturn);
+        return toReturn;
     } catch (e) {
         return notes;
     }
