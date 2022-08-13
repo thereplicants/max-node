@@ -5,6 +5,9 @@
 import { getChord } from './tools/midi-tools.mjs';
 import { buildSequence } from './tools/sequencer.mjs';
 
+// GLOBALS
+const TEMPO = 93;
+
 /* Input: */
 let meter = 1; // number of beats in a cycle
 let range = 1; // the number of notes above the root that a sequence can ascend
@@ -38,9 +41,14 @@ const setRange = (number) => {
   callBuildSequence();
 };
 
-const setTuplet = (number) => {
+function setTuplet(number) {
   tuplet = number;
-  console.log('`tuplet` set to ' + number);
+  console.log('`tuplet` set to ' + tuplet);
+
+  const pulseTicks = Math.round(480/tuplet);
+
+  this.outlet('pulse', pulseTicks);
+
   callBuildSequence();
 };
 
@@ -104,13 +112,22 @@ function callBuildSequence() {
   sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2)
 }
 
+function _getHumanizedOffset() {
+  const tempoInMs = 1 / TEMPO / tuplet * 60000;
+
+  return Math.round(Math.random()*tempoInMs*(humanize / 100));
+}
+
 function bang() {
   console.log("meter:", meter, " range:", range, " notes:", heldNotes, " seq:", sequence);
   if (previousNote) this.outlet('note', ...[previousNote, 0]);
   if (sequence.length && heldVelos.length) {
     try {
       previousNote = sequence[sIndex];
-      this.outlet('note', ...[sequence[sIndex], heldVelos[sIndex % heldVelos.length]]);
+      setTimeout(
+        () => {
+          this.outlet('note', ...[sequence[sIndex], heldVelos[sIndex % heldVelos.length]]);
+        }, _getHumanizedOffset())
       sIndex = mod(++sIndex, meter); 
     } catch(e) {
       console.log(e);
@@ -123,7 +140,7 @@ const setup = (maxApi) => {
   maxApi.addHandler('noteIn', (...args) => noteIn.apply(maxApi, args));
   maxApi.addHandler('setMeter', setMeter);
   maxApi.addHandler('setRange', setRange);
-  maxApi.addHandler('setTuplet', setTuplet);
+  maxApi.addHandler('setTuplet', (...args) => setTuplet.apply(maxApi, args));
   maxApi.addHandler('setMode', setMode);
   maxApi.addHandler('setHumanize', setHumanize);
   maxApi.addHandler('setWave1', setWave1);

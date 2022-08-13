@@ -24,28 +24,51 @@ function _assembleDesc(notes) {
     return newList.sort((a,b) => b - a);
 };
 
-function _assembleSine(notes, meter) {
-    const P = meter;
-    const A = (notes.length - 1) / 2;
+function __getSineIndex(x, width, period) {
+    const P = period;
+    const A = (width - 1) / 2;
     const phase = 0; 
     const vert = A;
     const factor = Math.PI / (0.5 * P);
 
     console.log("assmble Sine: ", P, A, factor);
+    return Math.floor(A * Math.sin(factor * x - phase) + vert)
+}
 
+function _assembleSine(notes, meter) {
     let toReturn = Array(meter);
     for (let i = 0; i < meter; i++) {
-        let j = Math.floor(A * Math.sin(factor * i - phase) + vert)
-        console.log("sine value ref: ", j);
+        let j = __getSineNotes(i, notes.length, meter); 
         toReturn[i] = notes[j];
-        console.log("note ref: ", toReturn[i]);
     };
     console.log("Sine Sequece: ", toReturn);
     return toReturn;
 };
 
+function __getDuosineIndex(x, width, period, waveL, waveS) {
+    const P = period;
+    const A = (width - 1) / 2;
+    const phase = 0; 
+    const vert = A;
+    const factorBase = Math.PI / (0.5 * P);
+    const waveRatio = waveL / waveS;
+    const factorApplied = (Math.PI * waveRatio) / (0.5 * P);
+
+    console.log("Duosine: ", factorBase, factorApplied);
+
+    const toReturn = Math.floor(Math.floor(A / 2) * ( Math.sin(factorBase * x - phase) + Math.sin(factorApplied * x - phase) ) + vert)
+    console.log(toReturn);
+    return toReturn;
+}
+
 function _assembleDuosine(notes, meter, wave1, wave2) {
-    console.log(wave1, wave2);
+    let toReturn = Array(meter);
+    for (let i = 0; i < meter; i++) {
+        let j = __getDuosineIndex(i, notes.length, meter, wave1, wave2); 
+        toReturn[i] = notes[j];
+    };
+    console.log("Duosine Sequece: ", toReturn);
+    return toReturn;
 };
 
 // takes the held notes and lists out all possible notes the sequencer can choose from. 

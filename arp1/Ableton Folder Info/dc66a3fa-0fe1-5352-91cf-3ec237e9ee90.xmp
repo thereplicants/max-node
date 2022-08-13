@@ -10,7 +10,7 @@
          <ablFR:items>
             <rdf:Bag>
                <rdf:li rdf:parseType="Resource">
-                  <ablFR:filePath>Mixmeter.amxd</ablFR:filePath>
+                  <ablFR:filePath>TR-SEQ-Duosine.amxd</ablFR:filePath>
                   <ablFR:colors>
                      <rdf:Bag>
                         <rdf:li>2</rdf:li>
@@ -21,7 +21,7 @@
             </rdf:Bag>
          </ablFR:items>
          <xmp:CreatorTool>Ableton Index 11.1.6</xmp:CreatorTool>
-         <xmp:CreateDate>2022-08-12T22:36:07-07:00</xmp:CreateDate>
+         <xmp:CreateDate>2022-08-12T23:26:33-07:00</xmp:CreateDate>
       </rdf:Description>
    </rdf:RDF>
 </x:xmpmeta>
