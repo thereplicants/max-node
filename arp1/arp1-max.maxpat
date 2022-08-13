@@ -2483,6 +2483,8 @@
 			}
 , 			{
 				"box" : 				{
+=======
+>>>>>>> origin
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -3136,8 +3138,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-56", 0 ],
-					"source" : [ "obj-54", 0 ]
+					"destination" : [ "obj-51", 0 ],
+					"source" : [ "obj-55", 0 ]
 				}
 
 			}
