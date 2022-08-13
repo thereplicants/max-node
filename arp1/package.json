@@ -3,6 +3,7 @@
   "main": "main.js",
   "license": "UNLICENSED",
   "dependencies": {
+    "@tonaljs/tonal": "^4.6.5",
     "chokidar": "^3.5.3"
   }
 }
