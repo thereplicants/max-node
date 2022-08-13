@@ -10,7 +10,7 @@
          <ablFR:items>
             <rdf:Bag>
                <rdf:li rdf:parseType="Resource">
-                  <ablFR:filePath>arp1.amxd</ablFR:filePath>
+                  <ablFR:filePath>Mixmeter.amxd</ablFR:filePath>
                   <ablFR:colors>
                      <rdf:Bag>
                         <rdf:li>2</rdf:li>
@@ -20,9 +20,8 @@
                </rdf:li>
             </rdf:Bag>
          </ablFR:items>
-         <xmp:CreatorTool>Updated by Ableton Index 11.1.6</xmp:CreatorTool>
-         <xmp:CreateDate>2022-08-09T07:27:26-07:00</xmp:CreateDate>
-         <xmp:MetadataDate>2022-08-09T07:27:29-07:00</xmp:MetadataDate>
+         <xmp:CreatorTool>Ableton Index 11.1.6</xmp:CreatorTool>
+         <xmp:CreateDate>2022-08-12T22:36:07-07:00</xmp:CreateDate>
       </rdf:Description>
    </rdf:RDF>
 </x:xmpmeta>
