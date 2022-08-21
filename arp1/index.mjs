@@ -47,6 +47,7 @@ function setTuplet(number) {
 
   const pulseTicks = Math.round(480/tuplet);
 
+  // move humanize here?
   this.outlet('pulse', pulseTicks);
 
   callBuildSequence();
@@ -97,7 +98,7 @@ const noteIn = (note, velocity) => {
     }
   } else {
     heldNotes.push(note); // Most recent note is at end of array 
-    heldVelos.push(velocity);   
+    heldVelos.push(Math.max(velocity, 70));   
   }
 
   callBuildSequence();
@@ -109,7 +110,10 @@ function mod(n, m) {
 }
 
 function callBuildSequence() {
-  sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2)
+  if (heldNotes.length) {
+    sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2)
+    
+  }
 }
 
 function _getHumanizedOffset() {
@@ -119,7 +123,7 @@ function _getHumanizedOffset() {
 }
 
 function bang() {
-  console.log("meter:", meter, " range:", range, " notes:", heldNotes, " seq:", sequence);
+  this.outlet('plot', ...sequence);
   if (previousNote) this.outlet('note', ...[previousNote, 0]);
   if (sequence.length && heldVelos.length) {
     try {
@@ -136,15 +140,15 @@ function bang() {
 }
 
 const setup = (maxApi) => {
-  maxApi.addHandler('panic', panic);
+  maxApi.addHandler('panic', (...args) => panic.apply(maxApi, args));
   maxApi.addHandler('noteIn', (...args) => noteIn.apply(maxApi, args));
-  maxApi.addHandler('setMeter', setMeter);
-  maxApi.addHandler('setRange', setRange);
+  maxApi.addHandler('setMeter', (...args) => setMeter.apply(maxApi, args));
+  maxApi.addHandler('setRange', (...args) => setRange.apply(maxApi, args));
   maxApi.addHandler('setTuplet', (...args) => setTuplet.apply(maxApi, args));
-  maxApi.addHandler('setMode', setMode);
-  maxApi.addHandler('setHumanize', setHumanize);
-  maxApi.addHandler('setWave1', setWave1);
-  maxApi.addHandler('setWave2', setWave2);
+  maxApi.addHandler('setMode', (...args) => setMode.apply(maxApi, args));
+  maxApi.addHandler('setHumanize', (...args) => setHumanize.apply(maxApi, args));
+  maxApi.addHandler('setWave1', (...args) => setWave1.apply(maxApi, args));
+  maxApi.addHandler('setWave2', (...args) => setWave2.apply(maxApi, args));
   maxApi.addHandler('bang', () => bang.apply(maxApi));
   console.log('Successfully booted Node for Max project');
 };
