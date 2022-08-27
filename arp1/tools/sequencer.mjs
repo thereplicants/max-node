@@ -32,44 +32,46 @@ function _assembleDesc(notes, meter) {
     return newList;
 };
 
-function __getSineIndex(x, width, period) {
+function __getSineIndex(x, width, period, phase) {
     const P = period;
     const A = (width - 1) / 2;
-    const phase = 0; 
     const vert = A;
     const factor = Math.PI / (0.5 * P);
 
     console.log("assmble Sine: ", P, A, factor);
-    return Math.floor(A * Math.sin(factor * x - phase) + vert)
+    return Math.floor(A * Math.sin(factor * x - (phase*0.5)) + vert)
 }
 
-function _assembleSine(notes, meter) {
+function _assembleSine(notes, meter, phase) {
     let toReturn = Array(meter);
     for (let i = 0; i < meter; i++) {
-        let j = __getSineIndex(i, notes.length, meter); 
+        let j = __getSineIndex(i, notes.length, meter, phase); 
+        if (j < 0) {
+            j = notes.length - j;
+            toReturn[i] = notes[j];
+        }
         toReturn[i] = notes[j];
     };
     console.log("Sine Sequece: ", toReturn);
     return toReturn;
 };
 
-function __getDuosineIndex(x, width, period, waveL, waveS) {
+function __getDuosineIndex(x, width, period, waveL, waveS, phase) {
     const P = period;
     const A = Math.round((width - 1)/ 2);
-    const phase = 0; 
     const vert = A;
     const factorBase = Math.PI / (0.5 * P);
     const waveRatio = waveL / waveS;
     const factorApplied = (Math.PI * waveRatio) / (0.5 * P);
-    const toReturn = Math.floor(A * 0.6 * (Math.sin(factorBase * x - phase) + Math.sin(factorApplied * x - phase) ) + vert)
+    const toReturn = Math.floor(A * 0.6 * (Math.sin(factorBase * x - (phase*0.5)) - Math.sin(factorApplied * x - (phase*0.5)) ) + vert)
     console.log(toReturn);
     return toReturn;
 }
 
-function _assembleDuosine(notes, meter, wave1, wave2) {
+function _assembleDuosine(notes, meter, wave1, wave2, phase) {
     let toReturn = Array(meter);
     for (let i = 0; i < meter; i++) {
-        let j = __getDuosineIndex(i, notes.length, meter, wave1, wave2); 
+        let j = __getDuosineIndex(i, notes.length, meter, wave1, wave2, phase); 
         if (j < 0) j = 0;
         if (j >= notes.length) j = notes.length - 1
         toReturn[i] = notes[j];
@@ -90,7 +92,7 @@ function __expandNotes(notes, range) {
             i++;
         }
         while (candidate > 120) {
-            candidate = candidate - 120;
+            candidate = candidate - notes[0];
         }
         newNotes.push(candidate);
     }
@@ -111,20 +113,20 @@ function _createAllPossibleList(notes, mode, range) {
     return newNotes;
 }
 
-function _createSequence(allPossibleNotes, meter, mode, wave1, wave2) {
+function _createSequence(allPossibleNotes, meter, mode, wave1, wave2, phase) {
     switch(mode) {
         case "touch": return _assembleTouch(allPossibleNotes, meter);
         case "asc": return _assembleAsc(allPossibleNotes, meter);
         case "desc": return _assembleDesc(allPossibleNotes, meter);
-        case "sine": return _assembleSine(allPossibleNotes, meter);
-        case "duo": return _assembleDuosine(allPossibleNotes, meter, wave1, wave2);  
+        case "sine": return _assembleSine(allPossibleNotes, meter, phase);
+        case "duo": return _assembleDuosine(allPossibleNotes, meter, wave1, wave2, phase);  
     }
 }
 
-export function buildSequence(notes, meter, range, mode, wave1, wave2) {
+export function buildSequence(notes, meter, range, mode, wave1, wave2, phase) {
     try {
-        console.log("buildSequence with ", notes, meter, range, mode, wave1, wave2);
-        const toReturn =  _createSequence(_createAllPossibleList(notes, mode, range), meter, mode, wave1, wave2);
+        console.log("buildSequence with ", notes, meter, range, mode, wave1, wave2, phase);
+        const toReturn =  _createSequence(_createAllPossibleList(notes, mode, range), meter, mode, wave1, wave2, phase);
         console.log("buildSequence returns: ", toReturn);
         return toReturn;
     } catch (e) {

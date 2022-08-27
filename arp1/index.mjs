@@ -16,6 +16,7 @@ let mode = "touch" // shape of sequence. enum: touch, asc, desc, sine, duo
 let humanize = 0; // dynamic swing
 let wave1 = 0; // for Duo Mode: First wave
 let wave2 = 0; // for Duo Mode: Second wave
+let phase = 0; // either sine mode: horizontal displacement
 
 /* State: */
 let heldNotes = []; // what the user is pressing down now
@@ -77,6 +78,11 @@ const setWave2 = (number) => {
   callBuildSequence();
 };
 
+const setPhase = (number) => {
+  phase = number;
+  console.log('`wave1` set to ' + number);
+  callBuildSequence();
+};
 
 /* Max event handlers: */
 const noteIn = (note, velocity) => {
@@ -111,7 +117,7 @@ function mod(n, m) {
 
 function callBuildSequence() {
   if (heldNotes.length) {
-    sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2)
+    sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2, phase)
     
   }
 }
@@ -123,7 +129,8 @@ function _getHumanizedOffset() {
 }
 
 function bang() {
-  this.outlet('plot', ...sequence);
+  let plotSequence = JSON.parse(JSON.stringify(sequence));;
+  this.outlet('plot', ...plotSequence);
   if (previousNote) this.outlet('note', ...[previousNote, 0]);
   if (sequence.length && heldVelos.length) {
     try {
@@ -140,15 +147,16 @@ function bang() {
 }
 
 const setup = (maxApi) => {
-  maxApi.addHandler('panic', (...args) => panic.apply(maxApi, args));
-  maxApi.addHandler('noteIn', (...args) => noteIn.apply(maxApi, args));
-  maxApi.addHandler('setMeter', (...args) => setMeter.apply(maxApi, args));
-  maxApi.addHandler('setRange', (...args) => setRange.apply(maxApi, args));
-  maxApi.addHandler('setTuplet', (...args) => setTuplet.apply(maxApi, args));
-  maxApi.addHandler('setMode', (...args) => setMode.apply(maxApi, args));
-  maxApi.addHandler('setHumanize', (...args) => setHumanize.apply(maxApi, args));
-  maxApi.addHandler('setWave1', (...args) => setWave1.apply(maxApi, args));
-  maxApi.addHandler('setWave2', (...args) => setWave2.apply(maxApi, args));
+  maxApi.addHandler('---panic', (...args) => panic.apply(maxApi, args));
+  maxApi.addHandler('---noteIn', (...args) => noteIn.apply(maxApi, args));
+  maxApi.addHandler('---setMeter', (...args) => setMeter.apply(maxApi, args));
+  maxApi.addHandler('---setRange', (...args) => setRange.apply(maxApi, args));
+  maxApi.addHandler('---setTuplet', (...args) => setTuplet.apply(maxApi, args));
+  maxApi.addHandler('---setMode', (...args) => setMode.apply(maxApi, args));
+  maxApi.addHandler('---setHumanize', (...args) => setHumanize.apply(maxApi, args));
+  maxApi.addHandler('---setWave1', (...args) => setWave1.apply(maxApi, args));
+  maxApi.addHandler('---setWave2', (...args) => setWave2.apply(maxApi, args));
+  maxApi.addHandler('---setPhase', (...args) => setPhase.apply(maxApi, args));
   maxApi.addHandler('bang', () => bang.apply(maxApi));
   console.log('Successfully booted Node for Max project');
 };
