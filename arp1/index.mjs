@@ -147,16 +147,16 @@ function bang() {
 }
 
 const setup = (maxApi) => {
-  maxApi.addHandler('---panic', (...args) => panic.apply(maxApi, args));
-  maxApi.addHandler('---noteIn', (...args) => noteIn.apply(maxApi, args));
-  maxApi.addHandler('---setMeter', (...args) => setMeter.apply(maxApi, args));
-  maxApi.addHandler('---setRange', (...args) => setRange.apply(maxApi, args));
-  maxApi.addHandler('---setTuplet', (...args) => setTuplet.apply(maxApi, args));
-  maxApi.addHandler('---setMode', (...args) => setMode.apply(maxApi, args));
-  maxApi.addHandler('---setHumanize', (...args) => setHumanize.apply(maxApi, args));
-  maxApi.addHandler('---setWave1', (...args) => setWave1.apply(maxApi, args));
-  maxApi.addHandler('---setWave2', (...args) => setWave2.apply(maxApi, args));
-  maxApi.addHandler('---setPhase', (...args) => setPhase.apply(maxApi, args));
+  maxApi.addHandler('panic', (...args) => panic.apply(maxApi, args));
+  maxApi.addHandler('noteIn', (...args) => noteIn.apply(maxApi, args));
+  maxApi.addHandler('setMeter', (...args) => setMeter.apply(maxApi, args));
+  maxApi.addHandler('setRange', (...args) => setRange.apply(maxApi, args));
+  maxApi.addHandler('setTuplet', (...args) => setTuplet.apply(maxApi, args));
+  maxApi.addHandler('setMode', (...args) => setMode.apply(maxApi, args));
+  maxApi.addHandler('setHumanize', (...args) => setHumanize.apply(maxApi, args));
+  maxApi.addHandler('setWave1', (...args) => setWave1.apply(maxApi, args));
+  maxApi.addHandler('setWave2', (...args) => setWave2.apply(maxApi, args));
+  maxApi.addHandler('setPhase', (...args) => setPhase.apply(maxApi, args));
   maxApi.addHandler('bang', () => bang.apply(maxApi));
   console.log('Successfully booted Node for Max project');
 };

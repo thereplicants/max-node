@@ -46,7 +46,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 568.0, 432.0, 56.0, 20.0 ],
+					"patching_rect" : [ 576.0, 416.0, 56.0, 20.0 ],
 					"text" : "route bang"
 				}
 
@@ -81,8 +81,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 8.0, 272.0, 97.0, 20.0 ],
-					"text" : "prepend ---setMeter"
+					"patching_rect" : [ 8.0, 272.0, 87.0, 20.0 ],
+					"text" : "prepend setMeter"
 				}
 
 			}
@@ -147,8 +147,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 443.0, 616.0, 100.0, 20.0 ],
-					"text" : "prepend ---setPhase"
+					"patching_rect" : [ 443.0, 616.0, 90.0, 20.0 ],
+					"text" : "prepend setPhase"
 				}
 
 			}
@@ -376,8 +376,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 94.0, 448.0, 116.0, 20.0 ],
-					"text" : "prepend ---setHumanize"
+					"patching_rect" : [ 94.0, 448.0, 106.0, 20.0 ],
+					"text" : "prepend setHumanize"
 				}
 
 			}
@@ -439,8 +439,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 331.0, 616.0, 102.0, 20.0 ],
-					"text" : "prepend ---setWave2"
+					"patching_rect" : [ 331.0, 616.0, 92.0, 20.0 ],
+					"text" : "prepend setWave2"
 				}
 
 			}
@@ -474,8 +474,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 216.0, 616.0, 102.0, 20.0 ],
-					"text" : "prepend ---setWave1"
+					"patching_rect" : [ 216.0, 616.0, 92.0, 20.0 ],
+					"text" : "prepend setWave1"
 				}
 
 			}
@@ -651,8 +651,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 223.0, 297.0, 96.0, 20.0 ],
-					"text" : "prepend ---setMode"
+					"patching_rect" : [ 223.0, 297.0, 86.0, 20.0 ],
+					"text" : "prepend setMode"
 				}
 
 			}
@@ -686,8 +686,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 112.0, 296.0, 101.0, 20.0 ],
-					"text" : "prepend ---setRange"
+					"patching_rect" : [ 112.0, 296.0, 91.0, 20.0 ],
+					"text" : "prepend setRange"
 				}
 
 			}
@@ -848,8 +848,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 336.0, 264.0, 99.0, 20.0 ],
-					"text" : "prepend ---setTuplet"
+					"patching_rect" : [ 336.0, 264.0, 89.0, 20.0 ],
+					"text" : "prepend setTuplet"
 				}
 
 			}
@@ -1038,6 +1038,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -1100,8 +1102,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 648.0, 104.0, 42.0, 20.0 ],
-					"text" : "---panic"
+					"patching_rect" : [ 648.0, 104.0, 32.0, 20.0 ],
+					"text" : "panic"
 				}
 
 			}
@@ -1195,8 +1197,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 8.0, 72.0, 86.0, 20.0 ],
-					"text" : "prepend ---noteIn"
+					"patching_rect" : [ 8.0, 72.0, 76.0, 20.0 ],
+					"text" : "prepend noteIn"
 				}
 
 			}
@@ -1223,6 +1225,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -1770,19 +1774,19 @@
 				"boxes" : [ "obj-7", "obj-49" ]
 			}
 , 			{
-				"boxes" : [ "obj-9", "obj-24", "obj-11", "obj-10" ]
-			}
-, 			{
-				"boxes" : [ "obj-1", "obj-31", "obj-28", "obj-2" ]
+				"boxes" : [ "obj-41", "obj-42", "obj-6", "obj-36", "obj-37", "obj-39", "obj-33", "obj-34", "obj-38", "obj-45", "obj-40" ]
 			}
 , 			{
 				"boxes" : [ "obj-30", "obj-21", "obj-22", "obj-23" ]
 			}
 , 			{
-				"boxes" : [ "obj-70", "obj-71", "obj-77", "obj-69" ]
+				"boxes" : [ "obj-1", "obj-31", "obj-28", "obj-2" ]
 			}
 , 			{
-				"boxes" : [ "obj-41", "obj-42", "obj-6", "obj-36", "obj-37", "obj-39", "obj-33", "obj-34", "obj-38", "obj-45", "obj-40" ]
+				"boxes" : [ "obj-9", "obj-24", "obj-11", "obj-10" ]
+			}
+, 			{
+				"boxes" : [ "obj-70", "obj-71", "obj-77", "obj-69" ]
 			}
  ]
 	}
