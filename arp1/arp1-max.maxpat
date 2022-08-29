@@ -41,6 +41,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-81",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 448.0, 160.0, 330.0, 20.0 ],
+					"text" : "add a beat (whatever ms), and you can subtract up to a 100 to have it go"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-79",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -280,7 +292,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 536.0, 160.0, 50.0, 20.0 ],
+					"patching_rect" : [ 544.0, 128.0, 50.0, 20.0 ],
 					"text" : "480"
 				}
 
@@ -315,7 +327,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 472.0, 120.0, 87.0, 20.0 ],
+					"patching_rect" : [ 536.0, 96.0, 87.0, 20.0 ],
 					"text" : "receive ---toMetro"
 				}
 
@@ -924,7 +936,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 440.0, 152.0, 75.0, 20.0 ],
+					"patching_rect" : [ 440.0, 224.0, 75.0, 20.0 ],
 					"text" : "send ---toNode"
 				}
 
@@ -949,7 +961,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 440.0, 120.0, 24.0, 24.0 ]
+					"patching_rect" : [ 440.0, 192.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -1038,8 +1050,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -1225,8 +1235,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -1575,7 +1583,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-56", 0 ],
+					"destination" : [ "obj-81", 0 ],
 					"source" : [ "obj-54", 0 ]
 				}
 
@@ -1612,7 +1620,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-54", 1 ],
-					"midpoints" : [ 481.5, 144.0, 566.197674751281738, 144.0, 566.197674751281738, 91.0, 511.5, 91.0 ],
+					"midpoints" : [ 545.5, 121.0, 528.197674751281738, 121.0, 528.197674751281738, 91.0, 511.5, 91.0 ],
 					"order" : 1,
 					"source" : [ "obj-59", 0 ]
 				}
@@ -1692,6 +1700,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-53", 0 ],
 					"source" : [ "obj-79", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-56", 0 ],
+					"source" : [ "obj-81", 0 ]
 				}
 
 			}
