@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 75.0, 140.0, 1042.0, 666.0 ],
+		"rect" : [ 75.0, 140.0, 612.0, 666.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 10.0,
@@ -40,19 +40,6 @@
 		"showontab" : 0,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
-				"box" : 				{
-					"id" : "obj-117",
-					"linecount" : 2,
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 504.0, 200.0, 50.0, 31.0 ],
-					"text" : "setTempo 40"
-				}
-
-			}
-, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
@@ -276,7 +263,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 576.0, 144.0, 65.0, 20.0 ],
+					"patching_rect" : [ 544.0, 144.0, 65.0, 20.0 ],
 					"text" : "append ticks"
 				}
 
@@ -288,7 +275,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "int", "int" ],
-					"patching_rect" : [ 104.0, 176.0, 41.0, 20.0 ],
+					"patching_rect" : [ 64.0, 272.0, 41.0, 20.0 ],
 					"text" : "change"
 				}
 
@@ -299,7 +286,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 368.0, 224.0, 75.0, 20.0 ],
+					"patching_rect" : [ 24.0, 192.0, 75.0, 20.0 ],
 					"text" : "send ---toNode"
 				}
 
@@ -311,7 +298,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 360.0, 200.0, 91.0, 20.0 ],
+					"patching_rect" : [ 24.0, 168.0, 91.0, 20.0 ],
 					"text" : "prepend setTempo"
 				}
 
@@ -323,7 +310,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 16.0, 440.0, 76.0, 20.0 ],
+					"patching_rect" : [ 16.0, 480.0, 76.0, 20.0 ],
 					"text" : "receive --toDict"
 				}
 
@@ -367,7 +354,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 8.0, 368.0, 69.0, 20.0 ],
+					"patching_rect" : [ 24.0, 448.0, 69.0, 20.0 ],
 					"text" : "send ---toDict"
 				}
 
@@ -381,7 +368,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "int", "int" ],
-					"patching_rect" : [ 8.0, 176.0, 47.0, 21.0 ],
+					"patching_rect" : [ 8.0, 272.0, 47.0, 21.0 ],
 					"text" : "change"
 				}
 
@@ -395,7 +382,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 9,
 					"outlettype" : [ "int", "int", "int", "float", "list", "float", "float", "int", "int" ],
-					"patching_rect" : [ 8.0, 136.0, 176.0, 22.0 ],
+					"patching_rect" : [ 8.0, 240.0, 112.0, 22.0 ],
 					"text" : "plugsync~"
 				}
 
@@ -487,7 +474,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 16.0, 464.0, 61.0, 20.0 ],
+					"patching_rect" : [ 16.0, 504.0, 61.0, 20.0 ],
 					"text" : "prepend set"
 				}
 
@@ -498,7 +485,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 16.0, 528.0, 100.0, 100.0 ],
+					"patching_rect" : [ 16.0, 568.0, 100.0, 100.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 8.0, 56.0, 144.0, 88.0 ]
 				}
@@ -511,7 +498,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 16.0, 496.0, 77.0, 20.0 ],
+					"patching_rect" : [ 16.0, 536.0, 77.0, 20.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -529,7 +516,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 520.0, 288.0, 56.0, 20.0 ],
+					"patching_rect" : [ 560.0, 272.0, 56.0, 20.0 ],
 					"text" : "route bang"
 				}
 
@@ -541,7 +528,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 16.0, 224.0, 50.0, 20.0 ],
+					"patching_rect" : [ 24.0, 320.0, 50.0, 20.0 ],
 					"text" : "loadbang"
 				}
 
@@ -552,7 +539,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 24.0, 328.0, 75.0, 20.0 ],
+					"patching_rect" : [ 32.0, 424.0, 75.0, 20.0 ],
 					"text" : "send ---toNode"
 				}
 
@@ -564,26 +551,30 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 16.0, 304.0, 87.0, 20.0 ],
+					"patching_rect" : [ 24.0, 400.0, 87.0, 20.0 ],
 					"text" : "prepend setMeter"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"annotation" : "Meter = the number of notes played in a cycle. For example, 16 means you will hear 16 notes before the cycle repeats.",
+					"annotation_name" : "Length of Loop",
 					"id" : "obj-24",
 					"maxclass" : "live.dial",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 16.0, 248.0, 41.0, 48.0 ],
+					"patching_rect" : [ 24.0, 344.0, 41.0, 48.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 2.0, 3.0, 40.0, 48.0 ],
 					"prototypename" : "duration",
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_annotation_name" : "Length of Loop",
 							"parameter_enum" : [ "1", "2", "4", "8", "16", "32" ],
+							"parameter_info" : "Meter = the number of notes played in a cycle. For example, 16 means you will hear 16 notes before the cycle repeats.",
 							"parameter_initial" : [ 16 ],
 							"parameter_initial_enable" : 1,
 							"parameter_longname" : "Meter",
@@ -668,7 +659,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 464.0, 240.0, 50.0, 20.0 ],
+					"patching_rect" : [ 456.0, 224.0, 50.0, 20.0 ],
 					"text" : "loadbang"
 				}
 
@@ -680,7 +671,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 472.0, 264.0, 89.0, 20.0 ],
+					"patching_rect" : [ 464.0, 248.0, 89.0, 20.0 ],
 					"text" : "definerange 0 127"
 				}
 
@@ -692,7 +683,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 568.0, 264.0, 79.0, 20.0 ],
+					"patching_rect" : [ 560.0, 248.0, 79.0, 20.0 ],
 					"text" : "receive ---toPlot"
 				}
 
@@ -786,7 +777,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 568.0, 88.0, 87.0, 20.0 ],
+					"patching_rect" : [ 528.0, 112.0, 87.0, 20.0 ],
 					"text" : "receive ---toMetro"
 				}
 
@@ -798,7 +789,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 328.0, 64.0, 72.0, 27.0 ],
+					"patching_rect" : [ 328.0, 72.0, 72.0, 27.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 174.0, 90.0, 80.0, 27.0 ],
 					"text" : "START"
@@ -812,7 +803,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 208.0, 128.0, 31.0, 20.0 ],
+					"patching_rect" : [ 168.0, 216.0, 31.0, 20.0 ],
 					"text" : "bang"
 				}
 
@@ -1101,6 +1092,8 @@
 			}
 , 			{
 				"box" : 				{
+					"annotation" : "Range takes the list of held notes and extends them up through higher octaves. For example, if you held C1-E1-G1 and set a range of 7, the sequencer would only choose notes from C1-E1-G1-C2-E2-G2-C3",
+					"annotation_name" : "Number of pitches in use",
 					"id" : "obj-31",
 					"maxclass" : "live.dial",
 					"numinlets" : 1,
@@ -1112,6 +1105,8 @@
 					"presentation_rect" : [ 46.0, 3.0, 40.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_annotation_name" : "Number of pitches in use",
+							"parameter_info" : "Range takes the list of held notes and extends them up through higher octaves. For example, if you held C1-E1-G1 and set a range of 7, the sequencer would only choose notes from C1-E1-G1-C2-E2-G2-C3",
 							"parameter_initial" : [ 8.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_longname" : "Range",
@@ -1159,7 +1154,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 400.0, 64.0, 24.0, 24.0 ],
+					"patching_rect" : [ 400.0, 72.0, 24.0, 24.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 238.0, 90.0, 24.0, 24.0 ]
 				}
@@ -1264,6 +1259,8 @@
 			}
 , 			{
 				"box" : 				{
+					"annotation" : "Tuplet controls how the current BPM is divided. For example at 100 bpm, Tuplet = 2 (duplet) will divide that pulse in half. Triplets can be done with Tuplet = 3",
+					"annotation_name" : "Fraction of the beat",
 					"id" : "obj-21",
 					"maxclass" : "live.dial",
 					"numinlets" : 1,
@@ -1276,7 +1273,9 @@
 					"prototypename" : "duration",
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_annotation_name" : "Fraction of the beat",
 							"parameter_enum" : [ "1", "2", "4", "8", "16", "32" ],
+							"parameter_info" : "Tuplet controls how the current BPM is divided. For example at 100 bpm, Tuplet = 2 (duplet) will divide that pulse in half. Triplets can be done with Tuplet = 3",
 							"parameter_initial" : [ 1 ],
 							"parameter_initial_enable" : 1,
 							"parameter_longname" : "Tuplet",
@@ -1333,7 +1332,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 368.0, 160.0, 75.0, 20.0 ],
+					"patching_rect" : [ 400.0, 168.0, 75.0, 20.0 ],
 					"text" : "send ---toNode"
 				}
 
@@ -1345,7 +1344,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 9,
 					"outlettype" : [ "int", "int", "float", "float", "float", "", "int", "float", "" ],
-					"patching_rect" : [ 456.0, 64.0, 120.0, 20.0 ],
+					"patching_rect" : [ 440.0, 80.0, 120.0, 20.0 ],
 					"text" : "transport"
 				}
 
@@ -1358,7 +1357,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 368.0, 128.0, 24.0, 24.0 ]
+					"patching_rect" : [ 400.0, 136.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -1369,7 +1368,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 440.0, 128.0, 95.0, 20.0 ],
+					"patching_rect" : [ 400.0, 112.0, 95.0, 20.0 ],
 					"text" : "metro 4n @active 1"
 				}
 
@@ -1447,6 +1446,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -1632,6 +1633,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -1693,15 +1696,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-110", 0 ],
-					"order" : 1,
-					"source" : [ "obj-109", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-117", 1 ],
-					"order" : 0,
 					"source" : [ "obj-109", 0 ]
 				}
 
@@ -1725,6 +1719,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-109", 0 ],
+					"midpoints" : [ 73.5, 302.0, 123.484495162963867, 302.0, 123.484495162963867, 146.178294777870178, 33.5, 146.178294777870178 ],
 					"source" : [ "obj-111", 0 ]
 				}
 
@@ -1762,7 +1757,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-58", 0 ],
-					"midpoints" : [ 409.5, 98.34883713722229, 438.198412895202637, 98.34883713722229, 438.198412895202637, 61.527131915092468, 465.5, 61.527131915092468 ],
+					"midpoints" : [ 409.5, 106.0, 429.5, 106.0, 429.5, 77.0, 449.5, 77.0 ],
 					"order" : 0,
 					"source" : [ "obj-12", 0 ]
 				}
