@@ -39,7 +39,7 @@ function __getSineIndex(x, width, period, phase) {
     const factor = Math.PI / (0.5 * P);
 
     console.log("assmble Sine: ", P, A, factor);
-    return Math.floor(A * Math.sin(factor * x - (phase*0.5)) + vert)
+    return Math.floor(A * Math.sin(factor * x - (phase*0.5)) + vert) 
 }
 
 function _assembleSine(notes, meter, phase) {
@@ -56,16 +56,15 @@ function _assembleSine(notes, meter, phase) {
     return toReturn;
 };
 
-function __getDuosineIndex(x, width, period, waveL, waveS, phase) {
+function __getDuosineIndex(x, width, period, wave1, wave2, phase) {
     const P = period;
-    const A = Math.round((width - 1)/ 2);
+    const A = (width - 1) / 2;
     const vert = A;
-    const factorBase = Math.PI / (0.5 * P);
-    const waveRatio = waveL / waveS;
-    const factorApplied = (Math.PI * waveRatio) / (0.5 * P);
-    const toReturn = Math.floor(A * 0.6 * (Math.sin(factorBase * x - (phase*0.5)) - Math.sin(factorApplied * x - (phase*0.5)) ) + vert)
-    console.log(toReturn);
-    return toReturn;
+
+    const waveA = A * Math.sin((Math.PI / (0.5 * wave1 * P)) * x) + vert
+    const waveB = A * Math.sin((Math.PI / (0.5 * wave2 * P)) * x - (phase * 0.1)) + vert
+
+    return Math.floor((waveA + waveB) / 2); 
 }
 
 function _assembleDuosine(notes, meter, wave1, wave2, phase) {
@@ -82,7 +81,7 @@ function _assembleDuosine(notes, meter, wave1, wave2, phase) {
 function __expandNotes(notes, range) {
     let newNotes = JSON.parse(JSON.stringify(notes));
     // let i = newNotes.length;
-    console.log("expand notes ", notes, range)
+    // console.log("expand notes ", notes, range)
     while (newNotes.length < range) {
         let i = newNotes.length;
         let candidate = 0;
@@ -106,7 +105,7 @@ function _createAllPossibleList(notes, mode, range) {
         notes = notes.sort(function(a,b) { return parseInt(a) - parseInt(b) });
     }
     newNotes = __expandNotes(notes, range);
-    console.log("expanded", newNotes);
+    // console.log("expanded", newNotes);
     if (mode !== "touch") {
         newNotes = newNotes.sort(function(a,b) { return parseInt(a) - parseInt(b) });
     }
@@ -125,9 +124,9 @@ function _createSequence(allPossibleNotes, meter, mode, wave1, wave2, phase) {
 
 export function buildSequence(notes, meter, range, mode, wave1, wave2, phase) {
     try {
-        console.log("buildSequence with ", notes, meter, range, mode, wave1, wave2, phase);
+        // console.log("buildSequence with ", notes, meter, range, mode, wave1, wave2, phase);
         const toReturn =  _createSequence(_createAllPossibleList(notes, mode, range), meter, mode, wave1, wave2, phase);
-        console.log("buildSequence returns: ", toReturn);
+        // console.log("buildSequence returns: ", toReturn);
         return toReturn;
     } catch (e) {
         return notes;
