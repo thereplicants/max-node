@@ -1,5 +1,7 @@
 # Node for Max TypeScript Boilerplate
 
+https://github.com/yuichkun/n4m-typescript-boilerplate
+
 A boilerplate of using TypeScript in Node for Max.
 
 ![medium](https://user-images.githubusercontent.com/14039540/59962685-bc79be80-9523-11e9-9ad5-1bacacf47b2a.gif)
@@ -17,10 +19,6 @@ This boilerplate expects two use-cases.
   - fast to **execute**
 
 And, in both modes, basic types for Node.js core modules and `MaxAPI` are already included.
-
-## Contributing
-
-PRs are welcome!
 
 ## Licence
 
