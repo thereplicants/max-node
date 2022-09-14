@@ -126,7 +126,7 @@ export function buildSequence(notes, meter, range, mode, wave1, wave2, phase) {
     try {
         // console.log("buildSequence with ", notes, meter, range, mode, wave1, wave2, phase);
         const toReturn =  _createSequence(_createAllPossibleList(notes, mode, range), meter, mode, wave1, wave2, phase);
-        // console.log("buildSequence returns: ", toReturn);
+        console.log("buildSequence returns: ", toReturn);
         return toReturn;
     } catch (e) {
         return notes;

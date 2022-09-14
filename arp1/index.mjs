@@ -13,7 +13,6 @@ let meter = 1; // number of beats in a cycle
 let range = 1; // the number of notes above the root that a sequence can ascend
 let tuplet = 1; // length of a note, or how quickly the cycle moves
 let mode = "touch" // shape of sequence. enum: touch, asc, desc, sine, duo
-let tempo = 120.0; // dynamic swing
 let wave1 = 0; // for Duo Mode: First wave
 let wave2 = 0; // for Duo Mode: Second wave
 let phase = 0; // either sine mode: horizontal displacement
@@ -52,33 +51,21 @@ function setTuplet(number) {
 
 const setMode = (index) => {
   mode = ["touch","asc","desc","sine","duo"][index];
-  // console.log('`mode` set to ' + mode);
   callBuildSequence();
 };
 
-const setTempo = (number) => {
-  tempo = number;
-  console.log('`tempo` set to ' + number);
-  // callBuildSequence();
-  // setPulse(this);
-};
-
-
 const setWave1 = (number) => {
-  wave1 = number;
-  // console.log('`wave1` set to ' + number);
+  wave1 = number
   callBuildSequence();
 };
 
 const setWave2 = (number) => {
   wave2 = number;
-  // console.log('`wave2` set to ' + number);
   callBuildSequence();
 };
 
 const setPhase = (number) => {
   phase = number;
-  // console.log('`wave1` set to ' + number);
   callBuildSequence();
 };
 
@@ -114,6 +101,7 @@ function mod(n, m) {
 }
 
 function callBuildSequence() {
+  console.log("call build sequence", heldNotes.length);
   if (heldNotes.length) {
     sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2, phase)
   }
@@ -126,7 +114,25 @@ function setPulse(maxApi) {
 }
 
 function bang() {
-  let plotSequence = JSON.parse(JSON.stringify(sequence));;
+  let plotSequence = JSON.parse(JSON.stringify(sequence));
+  try {
+    this.getDict("parameters")
+        .then((dict) => {
+          meter = dict.setMeter;
+          range = dict.setRange;
+          tuplet = dict.setTuplet;
+          mode = dict.setMode;
+          wave1 = dict.setWave1;
+          wave2 = dict.setWave2;
+          phase = dict.setPhase; 
+          console.log("from dict: ", meter, range, tuplet, mode, wave1, wave2, phase);
+        })
+        .catch(() => {});
+  } catch (e) {
+    console.log(e);
+  }
+  callBuildSequence();
+  
   this.outlet('plot', ...plotSequence);
   if (previousNote) this.outlet('note', ...[previousNote, 0]);
   if (sequence.length && heldVelos.length) {
