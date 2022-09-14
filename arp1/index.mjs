@@ -15,7 +15,8 @@ let tuplet = 1; // length of a note, or how quickly the cycle moves
 let mode = "touch" // shape of sequence. enum: touch, asc, desc, sine, duo
 let wave1 = 0; // for Duo Mode: First wave
 let wave2 = 0; // for Duo Mode: Second wave
-let phase = 0; // either sine mode: horizontal displacement
+let phase1 = 0; // either sine mode: horizontal displacement
+let phase2 = 0; // either sine mode: horizontal displacement
 
 /* State: */
 let heldNotes = []; // what the user is pressing down now
@@ -64,8 +65,13 @@ const setWave2 = (number) => {
   callBuildSequence();
 };
 
-const setPhase = (number) => {
-  phase = number;
+const setPhase1 = (number) => {
+  phase1 = number;
+  callBuildSequence();
+};
+
+const setPhase2 = (number) => {
+  phase2 = number;
   callBuildSequence();
 };
 
@@ -101,9 +107,9 @@ function mod(n, m) {
 }
 
 function callBuildSequence() {
-  console.log("call build sequence", heldNotes.length);
+  // console.log("call build sequence", heldNotes.length);
   if (heldNotes.length) {
-    sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2, phase)
+    sequence = buildSequence(heldNotes, meter, range, mode, wave1, wave2, phase1, phase2)
   }
 }
 
@@ -115,23 +121,6 @@ function setPulse(maxApi) {
 
 function bang() {
   let plotSequence = JSON.parse(JSON.stringify(sequence));
-  try {
-    this.getDict("parameters")
-        .then((dict) => {
-          meter = dict.setMeter;
-          range = dict.setRange;
-          tuplet = dict.setTuplet;
-          mode = dict.setMode;
-          wave1 = dict.setWave1;
-          wave2 = dict.setWave2;
-          phase = dict.setPhase; 
-          console.log("from dict: ", meter, range, tuplet, mode, wave1, wave2, phase);
-        })
-        .catch(() => {});
-  } catch (e) {
-    console.log(e);
-  }
-  callBuildSequence();
   
   this.outlet('plot', ...plotSequence);
   if (previousNote) this.outlet('note', ...[previousNote, 0]);
@@ -156,7 +145,8 @@ const setup = (maxApi) => {
   maxApi.addHandler('setMode', (...args) => setMode.apply(maxApi, args));
   maxApi.addHandler('setWave1', (...args) => setWave1.apply(maxApi, args));
   maxApi.addHandler('setWave2', (...args) => setWave2.apply(maxApi, args));
-  maxApi.addHandler('setPhase', (...args) => setPhase.apply(maxApi, args));
+  maxApi.addHandler('setPhase1', (...args) => setPhase1.apply(maxApi, args));
+  maxApi.addHandler('setPhase2', (...args) => setPhase2.apply(maxApi, args));
   maxApi.addHandler('bang', () => bang.apply(maxApi));
   console.log('Successfully booted Node for Max project');
 };
