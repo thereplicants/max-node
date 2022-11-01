@@ -61,6 +61,9 @@ function __getDuosineIndex(x, width, period, wave1, wave2, phase1, phase2) {
     const phaseShift1 = Math.round(period * phase1 * 25 / 255);
     const phaseShift2 = Math.round(period * phase2 * 25 / 255);
 
+    console.log("wave1: " + wave1)
+    console.log("phase1: "+ phase1)
+
     const waveA = width/4 * Math.sin((2 * Math.PI * 500/wave1 * x - phaseShift1)/period) + width/4;
     const waveB = width/4 * Math.sin((2 * Math.PI * 500/wave2 * x - phaseShift2)/period) + width/4;
 
