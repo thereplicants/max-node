@@ -13,10 +13,10 @@ let meter = 1; // number of beats in a cycle
 let range = 1; // the number of notes above the root that a sequence can ascend
 let tuplet = 1; // length of a note, or how quickly the cycle moves
 let mode = "touch" // shape of sequence. enum: touch, asc, desc, sine, duo
-let wave1 = 0; // for Duo Mode: First wave
-let wave2 = 0; // for Duo Mode: Second wave
-let phase1 = 0; // either sine mode: horizontal displacement
-let phase2 = 0; // either sine mode: horizontal displacement
+let wave1 = 100; // for Duo Mode: First wave
+let wave2 = 100; // for Duo Mode: Second wave
+let phase1 = 1; // either sine mode: horizontal displacement
+let phase2 = 1; // either sine mode: horizontal displacement
 
 /* State: */
 let heldNotes = []; // what the user is pressing down now
@@ -32,19 +32,19 @@ const panic = () => {
 /* onInput: */
 const setMeter = (number) => {
   meter = number;
-  // console.log('`meter` set to ' + number);
+  console.log('`meter` set to ' + number);
   callBuildSequence();
 };
 
 const setRange = (number) => {
   range = number;
-  // console.log('`range` set to ' + number);
+  console.log('`range` set to ' + number);
   callBuildSequence();
 };
 
 function setTuplet(number) {
   tuplet = number;
-  // console.log('`tuplet` set to ' + tuplet);
+  console.log('`tuplet` set to ' + number);
 
   callBuildSequence();
   setPulse(this);
@@ -56,21 +56,25 @@ const setMode = (index) => {
 };
 
 const setWave1 = (number) => {
+  console.log('`wave1` set to ' + number);
   wave1 = number
   callBuildSequence();
 };
 
 const setWave2 = (number) => {
+  console.log('`wave2` set to ' + number);
   wave2 = number;
   callBuildSequence();
 };
 
 const setPhase1 = (number) => {
+  console.log('`phase1` set to ' + number);
   phase1 = number;
   callBuildSequence();
 };
 
 const setPhase2 = (number) => {
+  console.log('`phase2` set to ' + number);
   phase2 = number;
   callBuildSequence();
 };
@@ -148,7 +152,8 @@ const setup = (maxApi) => {
   maxApi.addHandler('setPhase1', (...args) => setPhase1.apply(maxApi, args));
   maxApi.addHandler('setPhase2', (...args) => setPhase2.apply(maxApi, args));
   maxApi.addHandler('bang', () => bang.apply(maxApi));
-  console.log('Successfully booted Node for Max project');
+  maxApi.addHandler('loadbang', () => {console.log("LOADBUNGGG")})
+  console.log('Successfully booted Node for Max project, init values:', meter, range, tuplet, phase1, wave1);
 };
 
 export { setup };
