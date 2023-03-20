@@ -11,7 +11,7 @@ const TEMPO = 93;
 /* Input: */
 let meter = 1; // number of beats in a cycle
 let range = 1; // the number of notes above the root that a sequence can ascend
-let tuplet = 1; // length of a note, or how quickly the cycle moves
+let tuplet = 0.5; // length of a note, or how quickly the cycle moves
 let mode = "touch" // shape of sequence. enum: touch, asc, desc, sine, duo
 let wave1 = 100; // for Duo Mode: First wave
 let wave2 = 100; // for Duo Mode: Second wave
@@ -42,16 +42,23 @@ const setRange = (number) => {
   callBuildSequence();
 };
 
-function setTuplet(number) {
-  tuplet = number;
-  console.log('`tuplet` set to ' + number);
+function setTuplet(float) {
+  console.log(float);
+  if (float === 0) {
+    tuplet = 0.5;
+  }
+  else {
+    tuplet = float;
+  }
+  console.log('`tuplet` set to ' + tuplet);
 
   callBuildSequence();
   setPulse(this);
 };
 
 const setMode = (index) => {
-  mode = ["touch","asc","desc","sine","duo"][index];
+  mode = ["duo","asc","desc","sine"][index];
+  console.log('`mode` set to ' + mode);
   callBuildSequence();
 };
 
@@ -139,6 +146,14 @@ function bang() {
   }
 }
 
+function resetArp() {
+  heldNotes = []; // what the user is pressing down now
+  heldVelos = []; // save the velocities and loop through them
+  sequence = []; // this is what will play, in order
+  sIndex = 0; // the currently playing note in the sequence
+  previousNote = null; // value of the note
+}
+
 const setup = (maxApi) => {
   maxApi.addHandler('panic', (...args) => panic.apply(maxApi, args));
   maxApi.addHandler('noteIn', (...args) => noteIn.apply(maxApi, args));
@@ -153,6 +168,7 @@ const setup = (maxApi) => {
   maxApi.addHandler('setPhase2', (...args) => setPhase2.apply(maxApi, args));
   maxApi.addHandler('bang', () => bang.apply(maxApi));
   maxApi.addHandler('loadbang', () => {console.log("LOADBUNGGG")})
+  maxApi.addHandler('resetArp', () => resetArp.apply(maxApi, args));
   console.log('Successfully booted Node for Max project, init values:', meter, range, tuplet, phase1, wave1);
 };
 
